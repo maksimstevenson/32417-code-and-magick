@@ -12,7 +12,7 @@ userSetting.classList.remove('hidden');
 
 var similarListElement = document.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
-//Function for acquiring random element from an object
+// Function for acquiring random element from an object
 var getRandomElement = function (arr) {
   for (var i = 0; i < arr.length; i++) {
     var elementIndex = Math.floor(Math.random() * arr.length);
