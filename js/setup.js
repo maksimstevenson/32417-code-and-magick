@@ -52,7 +52,7 @@ var fireballColor = [
   '#30a8ee',
   '#5ce6c0',
   '#e848d5',
-  '#e6e848' 
+  '#e6e848'
 ];
 
 // Function for acquiring random element from an array
@@ -81,7 +81,6 @@ var createWizard = function (wizardsAmount) {
 
 var cloneWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
-  
   wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
   wizardElement.querySelector('.wizard-coat').style.fill = wizard.coat;
   wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyes;
@@ -113,9 +112,9 @@ var wizardEyes = changeAppearance.querySelector('.wizard-eyes');
 
 // Changes fireball color on click
 var changeFireball = function () {
- var newFireball = fireballColor[getRandomElement(fireballColor)];
- fireball.style.background = newFireball;
- inputFireball.value = newFireball;
+  var newFireball = fireballColor[getRandomElement(fireballColor)];
+  fireball.style.background = newFireball;
+  inputFireball.value = newFireball;
 };
 
 fireball.addEventListener('click', function (evt) {
@@ -124,13 +123,13 @@ fireball.addEventListener('click', function (evt) {
 });
 
 // Changes wizard's appearance on click
-var changeColor = function (arr, el,input) {
+var changeColor = function (arr, el, input) {
   var newColor = coatColor[getRandomElement(coatColor)];
   el.style.fill = newColor;
   input.value = newColor;
 };
 
-wizardEyes.addEventListener('click', function(evt) {
+wizardEyes.addEventListener('click', function (evt) {
   evt.preventDefault();
   changeColor(eyesColor, wizardEyes, inputEyes);
 });
@@ -141,7 +140,7 @@ wizardCoat.addEventListener('click', function (evt) {
 });
 
 // Open/close events
-var closePopupEsc = function(evt) {
+var closePopupEsc = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
     closePopup();
   }
@@ -150,32 +149,32 @@ var closePopupEsc = function(evt) {
 var openPopup = function () {
   userSetting.classList.remove('hidden');
   document.addEventListener('keydown', closePopupEsc);
-}
+};
 
 var closePopup = function () {
   userSetting.classList.add('hidden');
   document.addEventListener('keydown', closePopupEsc);
-}
+};
 
-setupOpen.addEventListener('click', function() {
-   openPopup();
-})
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
 
 setupClose.addEventListener('click', function () {
   closePopup();
-})
+});
 
 setupClose.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     closePopup();
   }
-})
+});
 
 setupOpen.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     openPopup();
   }
-})
+});
 
 // Form's validation
 setupUsername.addEventListener('invalid', function () {
@@ -186,6 +185,6 @@ setupUsername.addEventListener('invalid', function () {
   } else if (setupUsername.validity.valueMissing) {
     setupUsername.setCustomValidity('Обязательное поле');
   } else {
-    setupUsername.setCustomValidity('')
+    setupUsername.setCustomValidity('');
   }
-})
+});
