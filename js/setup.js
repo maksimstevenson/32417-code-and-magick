@@ -99,17 +99,14 @@ similarListElement.appendChild(getWizardFragment(createWizard(4)));
 document.querySelector('.setup-similar').classList.remove('hidden');
 
 // Event listeners
-var setupUsername = document.querySelector('.setup-user-name');
-var changeAppearance = document.querySelector('.setup-player');
-
-var inputCoat = changeAppearance.querySelector('input[name= "coat-color"]');
-var inputEyes = changeAppearance.querySelector('input[name= "eyes-color"]');
-var inputFireball = changeAppearance.querySelector('input[name= "fireball-color"]');
-
-var fireball = changeAppearance.querySelector('.setup-fireball-wrap');
-var wizardCoat = changeAppearance.querySelector('.wizard-coat');
-var wizardEyes = changeAppearance.querySelector('.wizard-eyes');
-
+var usernameInput = document.querySelector('.setup-user-name');
+var playerAppearance = document.querySelector('.setup-player');
+var inputCoat = playerAppearance.querySelector('input[name= "coat-color"]');
+var inputEyes = playerAppearance.querySelector('input[name= "eyes-color"]');
+var inputFireball = playerAppearance.querySelector('input[name= "fireball-color"]');
+var fireball = playerAppearance.querySelector('.setup-fireball-wrap');
+var wizardCoat = playerAppearance.querySelector('.wizard-coat');
+var wizardEyes = playerAppearance.querySelector('.wizard-eyes');
 // Changes fireball color on click
 var changeFireball = function () {
   var newFireball = fireballColor[getRandomElement(fireballColor)];
@@ -121,10 +118,9 @@ fireball.addEventListener('click', function (evt) {
   evt.preventDefault();
   changeFireball();
 });
-
 // Changes wizard's appearance on click
 var changeColor = function (arr, el, input) {
-  var newColor = coatColor[getRandomElement(coatColor)];
+  var newColor = arr[getRandomElement(arr)];
   el.style.fill = newColor;
   input.value = newColor;
 };
@@ -138,7 +134,6 @@ wizardCoat.addEventListener('click', function (evt) {
   evt.preventDefault();
   changeColor(coatColor, wizardCoat, inputCoat);
 });
-
 // Open/close events
 var closePopupEsc = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
@@ -156,11 +151,13 @@ var closePopup = function () {
   document.addEventListener('keydown', closePopupEsc);
 };
 
-setupOpen.addEventListener('click', function () {
+setupOpen.addEventListener('click', function (evt) {
+  evt.preventDefault();
   openPopup();
 });
 
-setupClose.addEventListener('click', function () {
+setupClose.addEventListener('click', function (evt) {
+  evt.preventDefault();
   closePopup();
 });
 
@@ -175,16 +172,13 @@ setupOpen.addEventListener('keydown', function (evt) {
     openPopup();
   }
 });
-
 // Form's validation
-setupUsername.addEventListener('invalid', function () {
-  if (setupUsername.validity.tooShort) {
-    setupUsername.setCustomValidity('Имя должно состоять минимум из 2-х символов');
-  } else if (setupUsername.validity.tooLong) {
-    setupUsername.setCustomValidity('Имя не должно превышать 25-ти символов');
-  } else if (setupUsername.validity.valueMissing) {
-    setupUsername.setCustomValidity('Обязательное поле');
+usernameInput.addEventListener('invalid', function () {
+  if (usernameInput.validity.tooShort) {
+    usernameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
+  } else if (usernameInput.validity.valueMissing) {
+    usernameInput.setCustomValidity('Обязательное поле');
   } else {
-    setupUsername.setCustomValidity('');
+    usernameInput.setCustomValidity('');
   }
 });
