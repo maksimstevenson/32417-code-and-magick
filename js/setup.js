@@ -100,6 +100,8 @@ document.querySelector('.setup-similar').classList.remove('hidden');
 
 // Event listeners
 var usernameInput = document.querySelector('.setup-user-name');
+var newValue = usernameInput.value.trim();
+usernameInput.value = newValue;
 var playerAppearance = document.querySelector('.setup-player');
 var inputCoat = playerAppearance.querySelector('input[name= "coat-color"]');
 var inputEyes = playerAppearance.querySelector('input[name= "eyes-color"]');
