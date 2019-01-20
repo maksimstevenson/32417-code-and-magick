@@ -22,5 +22,9 @@
       }
       return maxTime;
     },
+    getRandomElement: function (arr) {
+      var randomElement = Math.floor(Math.random() * arr.length);
+      return randomElement;
+    },
   };
 })();
